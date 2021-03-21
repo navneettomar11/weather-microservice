@@ -1,0 +1,21 @@
+version: '3'
+services: 
+  weather-api:
+    build: weather-api/
+    image: weather-api
+    networks: 
+      - weather-app-network
+    restart: always
+    ports:
+      - 8080:8080
+  weather-ui:
+    build: weather-ui/
+    image: weather-ui
+    networks: 
+      - weather-app-network
+    restart: always
+    ports: 
+      - 3000:3000
+networks: 
+  weather-app-network:
+    driver: bridge
